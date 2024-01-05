@@ -1,7 +1,6 @@
 import os
 import uvicorn
 import fastapi
-import asyncio
 from linebot import WebhookParser
 from linebot.models import TextMessage, MessageEvent
 from aiolinebot import AioLineBotApi
@@ -9,6 +8,9 @@ from aiolinebot import AioLineBotApi
 app = fastapi.FastAPI()
 line_api = AioLineBotApi(channel_access_token=os.environ["LINE_CHANNEL_ACCESS_TOKEN"])
 parser = WebhookParser(channel_secret=os.environ["LINE_CHANNEL_SECRET"])
+
+#debug code
+LINE_TARGET_GROUP_ID = 'Target Group ID'
 
 async def line_bot_run():
     @app.post("/messaging_api/handle_request")
@@ -23,7 +25,7 @@ async def line_bot_run():
             if not isinstance(event.message, TextMessage):
                 continue
             
-            await line_api.reply_message_async(event.reply_token, TextMessage(text=event.message.text))
+            await line_api.push_message_async(to=LINE_TARGET_GROUP_ID, messages=TextMessage(text=event.message.text))
             
         return fastapi.Response("ok", status_code=200)
 
