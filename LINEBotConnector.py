@@ -23,7 +23,7 @@ async def line_bot_run():
             if not isinstance(event.message, TextMessage):
                 continue
             
-            line_api.reply_message(event.reply_token, TextMessage(text=event.message.text))
+            await line_api.reply_message_async(event.reply_token, TextMessage(text=event.message.text))
             
         return fastapi.Response("ok", status_code=200)
 
