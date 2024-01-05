@@ -7,8 +7,8 @@ from linebot.models import TextMessage, MessageEvent
 from aiolinebot import AioLineBotApi
 
 app = fastapi.FastAPI()
-line_api = AioLineBotApi(channel_access_token=os.environ["LINE_CHANEL_ACCESS_TOKEN"])
-parser = WebhookParser(channel_secret=os.environ["LINE_CHANEL_SECRET"])
+line_api = AioLineBotApi(channel_access_token=os.environ["LINE_CHANNEL_ACCESS_TOKEN"])
+parser = WebhookParser(channel_secret=os.environ["LINE_CHANNEL_SECRET"])
 
 async def line_bot_run():
     @app.post("/messaging_api/handle_request")
