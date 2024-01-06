@@ -1,9 +1,11 @@
 import os
 import discord
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+
 
 async def discord_bot_run():
     @client.event
