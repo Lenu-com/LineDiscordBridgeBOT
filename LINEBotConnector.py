@@ -13,6 +13,7 @@ parser = WebhookParser(channel_secret=os.environ["LINE_CHANNEL_SECRET"])
 
 # debug code
 LINE_TARGET_GROUP_ID = None
+DISCORD_TARGET_GUILD = None
 DISCORD_TARGET_CHANNEL = None
 
 
